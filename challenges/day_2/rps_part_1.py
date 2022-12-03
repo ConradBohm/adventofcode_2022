@@ -2,6 +2,8 @@ game = open("input.txt", "r")
 game_rounds = game.read().split("\n")
 game.close()
 
+# A&X == Rock, B&Y == Paper, C&Z == Scissors
+
 score = 0
 mapping = {"A X": 3, "A Y": 6, "A Z": 0,
            "B X": 0, "B Y": 3, "B Z": 6,

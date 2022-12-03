@@ -2,6 +2,9 @@ game = open("input.txt", "r")
 game_rounds = game.read().split("\n")
 game.close()
 
+# A == Rock, B == Paper, C == Scissors
+# X == Lose, Y == Draw , Z == Win
+
 score = 0
 shape_score_mapping = {
     "A":{
