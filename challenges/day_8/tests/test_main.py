@@ -1,4 +1,5 @@
 from tree_check import *
+
 small_test_data = open("tests/test_data/small_test_data.txt", "r")
 small_test_data = small_test_data.readlines()
 
@@ -14,3 +15,39 @@ def test_parse_tree_data():
 
     assert small_parsed_data == expeted_result_small
     assert large_parsed_data == expeted_result_large
+
+def test_is_visible():
+    small_visible_check = [[2],[8],[4],[6]]
+    large_visible_check_1 = [[5,3],[5,3],[3,2],[5,6]]
+    large_visible_check_2 = [[0],[5,3,5],[2],[5,1,2]]
+
+
+    assert is_visible(small_visible_check, 5)
+    assert not is_visible(large_visible_check_1, 3)
+    assert is_visible(large_visible_check_2, 5)
+
+def test_is_visible_edges():
+    top_edge = [[],[5,8],[1],[3]]
+    bottom_edge = [[5,2],[],[7],[9]]
+    left_edge = [[1],[7],[],[5,6]]
+    right_edge = [[3],[9],[5,4],[]]
+
+    top_right_corner = [[],[6,9],[2,1],[]]
+    bottom_left_corner = [[4,1],[],[],[8,9]]
+
+    assert is_visible(top_edge,2)
+    assert is_visible(bottom_edge,8)
+    assert is_visible(left_edge,4)
+    assert is_visible(right_edge,6)
+
+    assert is_visible(top_right_corner,3)
+    assert is_visible(bottom_left_corner,7)
+
+# def test_get_visible_trees():
+#     small_parsed_data = parse_tree_data(small_test_data)
+#     large_parsed_data = parse_tree_data(large_test_data)
+
+#     small_count = get_visible_trees(small_parsed_data)
+#     large_count = get_visible_trees(large_parsed_data)
+#     assert small_count == 9
+#     assert large_count == 21
