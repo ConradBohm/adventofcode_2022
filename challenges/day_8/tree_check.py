@@ -1,13 +1,16 @@
 tree_data = open("input.txt", "r")
-tree_data = tree_data.read()
+tree_data = tree_data.readlines()
 
 parsed_tree_data = []
 
 def parse_tree_data(tree_data):
     return_data = []
     for line in tree_data:
+        print('line is',line)
         tree_data_row = []
         for tree in line:
+            if tree == '\n':
+                continue
             tree_data_row.append(int(tree))
 
         return_data.append(tree_data_row)
@@ -16,9 +19,9 @@ def parse_tree_data(tree_data):
 
 def get_visible_trees(data):
     count = 0
-    max_j = len(data)
-    max_i = len(data[0])    # can use first row as all rows are the same length
-    for j in data:          # i is colums, j is rows
+    max_j = len(data) - 1
+    max_i = len(data[0]) -1 # can use first row as all rows are the same length
+    for j in data:          # i is columns, j is rows
         for i in j:
             tree_height = data[j][i]
             trees_up = []
