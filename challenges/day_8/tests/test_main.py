@@ -43,11 +43,11 @@ def test_is_visible_edges():
     assert is_visible(top_right_corner,3)
     assert is_visible(bottom_left_corner,7)
 
-# def test_get_visible_trees():
-#     small_parsed_data = parse_tree_data(small_test_data)
-#     large_parsed_data = parse_tree_data(large_test_data)
+def test_get_visible_trees():
+    small_parsed_data = parse_tree_data(small_test_data)
+    large_parsed_data = parse_tree_data(large_test_data)
 
-#     small_count = get_visible_trees(small_parsed_data)
-#     large_count = get_visible_trees(large_parsed_data)
-#     assert small_count == 9
-#     assert large_count == 21
+    small_count = get_visible_trees(small_parsed_data)
+    assert small_count == 9
+    large_count = get_visible_trees(large_parsed_data)
+    assert large_count == 21
