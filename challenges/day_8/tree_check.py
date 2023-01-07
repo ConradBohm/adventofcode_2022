@@ -39,7 +39,6 @@ def get_visible_trees(data):
     
     for j, row in enumerate(data):
         for i, tree in enumerate(row):
-            print('tree',tree)
             tree_height = tree
             trees_up = []
             trees_down = []
@@ -47,20 +46,15 @@ def get_visible_trees(data):
             trees_right = []
 
             for x in range(j-1,-1,-1):
-                print(data[x][i], 'x:',x)
                 trees_up.append(data[x][i])
             for x in range(j+1,max_j+1,1):
-                print(data[x][i], 'x:',x)
                 trees_down.append(data[x][i])
             for x in range(i-1,-1,-1):
-                print(data[j][x], 'x:',x)
                 trees_left.append(data[j][x])
             for x in range(i+1,max_i+1,1):
-                print(data[j][x], 'x:',x)
                 trees_right.append(data[j][x])
 
             tree_collection = [trees_up,trees_down,trees_left,trees_right]
-            print('tree colelction:',tree_collection,'\n-------------')
 
             if is_visible(tree_collection, tree_height):
                 count += 1
