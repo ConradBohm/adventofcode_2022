@@ -13,8 +13,8 @@ class Rope:
         - first element a letter in U,D,L,R
         - second element a, integer
         """
-        print(f'---------------\nstarting locations:\nhead - {self.head_position}\ntail - {self.tail_position}\n')
-        print(f'instruction: {instruction}')
+        # print(f"---------------\nstarting locations:\nhead - {self.head_position}\ntail - {self.tail_position}\n")
+        # print(f'instruction: {instruction}')
         direction = instruction[0]
         number = instruction[1]
         for i in range(int(number)):
@@ -35,13 +35,13 @@ class Rope:
         current_x = self.tail_position[0]
         current_y = self.tail_position[1]
 
-        print(self.tail_position, self.head_position)
-        print('current posotiton: x',current_x,'y',current_y)
+        # print(self.tail_position, self.head_position)
+        # print('current posotiton: x',current_x,'y',current_y)
 
         for j in range(current_y - 1,current_y + 2, 1): 
             for i in range(current_x - 1,current_x + 2, 1):
                 if [i,j] == self.head_position:
-                    print('head close to tail')
+                    # print('head close to tail')
                     return
 
         if direction == 'U':
@@ -57,5 +57,5 @@ class Rope:
             self.tail_position[0] = self.head_position[0] - 1
             self.tail_position[1] = self.head_position[1]  
 
-        self.tail_tracker.append(self.tail_position.copy())
-        print(f'tail tracker - {self.tail_tracker}')
+        self.tail_tracker.append(self.tail_position[:])
+        # print(f'tail tracker - {self.tail_tracker}')
