@@ -10,6 +10,6 @@ def test_full_run_using_sample_data():
     test_root.node_type = 'directory'
 
     main.assemble_directory(test_root,sample_data)
-    print('==================\ncalculating value\n==================')
     test_root.calculate_value()
+    print(classes.value_total)
     assert classes.value_total == 95437

@@ -5,10 +5,10 @@ file_logs = file_logs.readlines()
 
 
 def assemble_directory(directory,file_logs):
-    print('==============================\ndirectory',directory.name)
+    #print('==============================\ndirectory',directory.name)
     while len(file_logs) > 0:
         line = file_logs[0]
-        print('line',line)
+        #print('line',line)
 
         if '$ cd /' in line:    # line 1 exception
             file_logs.pop(0)
@@ -26,7 +26,7 @@ def assemble_directory(directory,file_logs):
             file_logs.pop(0)
             assemble_directory(new_dir[0],file_logs)
         else:
-            print('making a child with line:',line)
+            #print('making a child with line:',line)
             directory.assign_child(line)
             file_logs.pop(0)
 
@@ -39,4 +39,4 @@ def main():
 
     print(classes.value_total)
     
-        
+main()
