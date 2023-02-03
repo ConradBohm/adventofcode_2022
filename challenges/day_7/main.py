@@ -5,24 +5,30 @@ file_logs = file_logs.readlines()
 
 
 def assemble_directory(directory,file_logs):
-    while True:
+    print('==============================\ndirectory',directory.name)
+    while len(file_logs) > 0:
         line = file_logs[0]
-        if line[0] == '$':
-            if 'ls' in line:
-                file_logs.pop(0)
-                continue
-            elif 'cd ..' in line:
-                file_logs.pop(0)
-                return
-            else:
-                for node in directory.children:
-                    if node.name in line[5:]:
-                        new_directory = node
-                file_logs.pop(0)
-                assemble_directory(new_directory)
+        print('line',line)
 
-        directory.assign_child(line)
-        file_logs.pop(0)
+        if '$ cd /' in line:    # line 1 exception
+            file_logs.pop(0)
+            continue
+        
+        if '$ ls' in line:
+            file_logs.pop(0)
+            continue
+        elif '$ cd ..' in line:
+            file_logs.pop(0)
+            break
+        elif '$ cd ' in line:
+            dir = [node if node.name in line[5:] else '' for node in directory.children]
+            new_dir = list(filter(None,dir))
+            file_logs.pop(0)
+            assemble_directory(new_dir[0],file_logs)
+        else:
+            print('making a child with line:',line)
+            directory.assign_child(line)
+            file_logs.pop(0)
 
 def main():
     root = classes.Node('/')
