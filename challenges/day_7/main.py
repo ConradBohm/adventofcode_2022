@@ -5,10 +5,8 @@ file_logs = file_logs.readlines()
 
 
 def assemble_directory(directory,file_logs):
-    #print('==============================\ndirectory',directory.name)
     while len(file_logs) > 0:
         line = file_logs[0]
-        #print('line',line)
 
         if '$ cd /' in line:    # line 1 exception
             file_logs.pop(0)
@@ -43,6 +41,6 @@ def main():
     root.find_dir_to_delete(space_needed)
 
     print(classes.value_total, " - value total of directories < 100000")
-    print(classes.dir_to_delete[0].value, " - value of smallest dir to delete, > 30000000")
+    print(classes.dir_to_delete[0].value, " - value of smallest dir to delete")
     
 main()

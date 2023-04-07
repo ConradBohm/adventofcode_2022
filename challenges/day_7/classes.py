@@ -12,17 +12,14 @@ class Node:
         global value_total
         for node in self.children:
             if node.node_type == 'file':
-                #print('adding file',node.name,'to dir value')
                 self.value += node.value
 
             if node.node_type == 'directory':
                 node.calculate_value()
                 self.value += node.value
 
-        #print('dir',self.name,'\nvalue',self.value)
         if self.value <= 100000:
             value_total += self.value
-            #print('value_total:',value_total)
 
     def find_dir_to_delete(self, min_size):
         global dir_to_delete
