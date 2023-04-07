@@ -37,6 +37,12 @@ def main():
     assemble_directory(root,file_logs)
     root.calculate_value()
 
-    print(classes.value_total)
+    space_free = 70000000 - root.value
+    space_needed = 30000000 - space_free
+
+    root.find_dir_to_delete(space_needed)
+
+    print(classes.value_total, " - value total of directories < 100000")
+    print(classes.dir_to_delete[0].value, " - value of smallest dir to delete, > 30000000")
     
 main()

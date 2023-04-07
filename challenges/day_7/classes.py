@@ -1,4 +1,5 @@
 value_total = 0
+dir_to_delete = []
 class Node:
     def __init__(self,name):
         self.parent = None
@@ -22,6 +23,21 @@ class Node:
         if self.value <= 100000:
             value_total += self.value
             #print('value_total:',value_total)
+
+    def find_dir_to_delete(self, min_size):
+        global dir_to_delete
+
+        if not dir_to_delete:
+            dir_to_delete.append(self)
+        
+        elif self.value > min_size:
+            dir_to_delete.pop()
+            dir_to_delete.append(self)
+
+        for child in self.children:
+            if child.node_type == 'directory':
+                child.find_dir_to_delete(min_size)
+        
 
     def assign_child(self,data_line):
         line = data_line.split()
