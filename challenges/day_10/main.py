@@ -1,3 +1,5 @@
+import classes
+
 instruction_data = open("input.txt", "r")
 instruction_data = instruction_data.readlines()
 
@@ -39,7 +41,7 @@ class CPU:
         return int(self.get_signal_strength())
 
 
-cpu = CPU()
+cpu = classes.CPU()
 
 def get_latest_instruction(instruction_list):
     output = instruction_list[0]

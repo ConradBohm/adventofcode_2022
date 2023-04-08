@@ -1,6 +1,6 @@
-import main
+import classes
 
-test_cpu = main.CPU()
+test_cpu = classes.CPU()
 
 def test_load_instruction():
     instruction_1 = 'noop'
