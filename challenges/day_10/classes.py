@@ -34,3 +34,30 @@ class CPU:
     def produce_output(self):
         print(f"Signal strength from register X for cycle {self.cycle} is {self.get_signal_strength()}")
         return int(self.get_signal_strength())
+    
+class CRT:
+    def __init__(self):
+        self.screen = ['','','','','','']
+        self.cycle = 0
+        self.position = 0
+        self.row = 0
+
+    def increment_cycle(self) -> None:
+        self.cycle += 1
+
+    def update_position(self):
+        self.position += 1
+
+        if self.position > 40:
+            self.position = 0
+            self.row += 1
+
+    def draw_pixel(self, cpu):
+        if (cpu.register_x + 1) >= self.position >= (cpu.register_x - 1):
+            self.screen[self.row] += '#'
+        else:
+            self.screen[self.row] += '.'
+
+    def render_screen(self):
+        for row in self.screen:
+            print(f"{row}\n")
