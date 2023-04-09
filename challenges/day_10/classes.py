@@ -49,7 +49,7 @@ class CRT:
         self.position += 1
 
         if self.position > 40:
-            self.position = 0
+            self.position = 1
             self.row += 1
 
     def draw_pixel(self, cpu):
@@ -60,4 +60,4 @@ class CRT:
 
     def render_screen(self):
         for row in self.screen:
-            print(f"{row}\n")
+            print(f"{row}")
