@@ -21,7 +21,6 @@ def main(instruction_data):
     
     while True:
         update_cycle()
-        crt.draw_pixel(cpu)
 
         if cpu.cycle in [20,60,100,140,180,220]:
             total_signal_strength_output += cpu.produce_output()
@@ -36,6 +35,8 @@ def main(instruction_data):
             cpu.update_register()
             cpu.update_mode()
 
+        crt.draw_pixel(cpu)
+
         if len(instruction_data) == 0:
             print(f"Total signal strength from the above breakpoints is {total_signal_strength_output}")
             crt.render_screen()
@@ -43,5 +44,3 @@ def main(instruction_data):
 
 if __name__ == "__main__":
     main(instruction_data)
-
-
